@@ -1,0 +1,190 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://b7jp36he6oqf6"
+path="res://.godot/imported/modular pizza dungeon_test scene.glb-f7f956f11ff590b7d892ae0a5863f942.scn"
+
+[deps]
+
+source_file="res://Levels/test scene from blender/modular pizza dungeon_test scene.glb"
+dest_files=["res://.godot/imported/modular pizza dungeon_test scene.glb-f7f956f11ff590b7d892ae0a5863f942.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+_subresources={
+"nodes": {
+"PATH:Altar": {
+"generate/physics": true
+},
+"PATH:Barrel_003": {
+"generate/physics": true
+},
+"PATH:Barrel_004": {
+"generate/physics": true
+},
+"PATH:Barrel_005": {
+"generate/physics": true
+},
+"PATH:Barrel_006": {
+"generate/physics": true
+},
+"PATH:Barrel_007": {
+"generate/physics": true
+},
+"PATH:Barrel_008": {
+"generate/physics": true
+},
+"PATH:Barrel_009": {
+"generate/physics": true
+},
+"PATH:Crate_003": {
+"generate/physics": true
+},
+"PATH:Crate_004": {
+"generate/physics": true
+},
+"PATH:Crate_005": {
+"generate/physics": true
+},
+"PATH:Crate_006": {
+"generate/physics": true
+},
+"PATH:Crate_007": {
+"generate/physics": true
+},
+"PATH:Crate_008": {
+"generate/physics": true
+},
+"PATH:Crate_009": {
+"generate/physics": true
+},
+"PATH:Doorway 01_001": {
+"generate/physics": true
+},
+"PATH:Doorway 02_001": {
+"generate/physics": true
+},
+"PATH:Doorway 02_002": {
+"generate/physics": true
+},
+"PATH:Plane": {
+"generate/physics": true
+},
+"PATH:Plane_001": {
+"generate/physics": true
+},
+"PATH:Plane_002": {
+"generate/physics": true
+},
+"PATH:Plane_003": {
+"generate/physics": true
+},
+"PATH:Plane_007": {
+"generate/physics": true
+},
+"PATH:Plane_008": {
+"generate/physics": true
+},
+"PATH:Plane_009": {
+"generate/physics": true
+},
+"PATH:Plane_010": {
+"generate/physics": true
+},
+"PATH:Plane_011": {
+"generate/physics": true
+},
+"PATH:Plane_012": {
+"generate/physics": true
+},
+"PATH:Plane_013": {
+"generate/physics": true
+},
+"PATH:Plane_014": {
+"generate/physics": true
+},
+"PATH:Plane_015": {
+"generate/physics": true
+},
+"PATH:Wall": {
+"generate/physics": true
+},
+"PATH:Wall_002": {
+"generate/physics": true
+},
+"PATH:Wall_003": {
+"generate/physics": true
+},
+"PATH:Wall_004": {
+"generate/physics": true
+},
+"PATH:Wall_005": {
+"generate/physics": true
+},
+"PATH:Wall_006": {
+"generate/physics": true
+},
+"PATH:Wall_007": {
+"generate/physics": true
+},
+"PATH:Wall_008": {
+"generate/physics": true
+},
+"PATH:Wall_009": {
+"generate/physics": true
+},
+"PATH:Wall_010": {
+"generate/physics": true
+},
+"PATH:Wall_011": {
+"generate/physics": true
+},
+"PATH:Wall_012": {
+"generate/physics": true
+},
+"PATH:Wall_013": {
+"generate/physics": true
+},
+"PATH:Wall_014": {
+"generate/physics": true
+},
+"PATH:Wall_015": {
+"generate/physics": true
+},
+"PATH:Wall_016": {
+"generate/physics": true
+},
+"PATH:Wall_017": {
+"generate/physics": true
+},
+"PATH:Wall_018": {
+"generate/physics": true
+},
+"PATH:Wall_019": {
+"generate/physics": true
+}
+}
+}
+gltf/naming_version=1
+gltf/embedded_image_handling=1

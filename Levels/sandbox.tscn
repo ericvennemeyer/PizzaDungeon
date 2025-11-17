@@ -35,7 +35,7 @@ layers = 3
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_7t7j1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1, 15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1, 5)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_fmlkh")
