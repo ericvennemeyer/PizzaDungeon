@@ -28,9 +28,9 @@ shadow_enabled = true
 
 [node name="modular pizza dungeon_test scene" parent="." instance=ExtResource("1_4wt11")]
 
-[node name="Player" parent="." instance=ExtResource("2_nq0nm")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8, 1, 19)
-
 [node name="Enemy" parent="." instance=ExtResource("3_nq0nm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.86022, 0.639993, 13.8916)
 attack_damage = 5
+
+[node name="Player" parent="." instance=ExtResource("2_nq0nm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, 16)
