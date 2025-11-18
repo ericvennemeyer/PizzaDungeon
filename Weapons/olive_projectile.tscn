@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bj3cuwnawlyyr"]
+
+[ext_resource type="Script" uid="uid://bfx720r11q1ca" path="res://Weapons/olive_projectile.gd" id="1_pq7d0"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qy02c"]
+radius = 0.10231
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mpkly"]
+albedo_color = Color(0.136729, 0.139654, 0.0565566, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_0yw6c"]
+material = SubResource("StandardMaterial3D_mpkly")
+radius = 0.1
+height = 0.2
+
+[node name="OliveProjectile" type="RigidBody3D"]
+script = ExtResource("1_pq7d0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_qy02c")
+
+[node name="TempOlive" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_0yw6c")

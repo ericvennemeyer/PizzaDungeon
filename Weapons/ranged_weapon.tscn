@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjvjua134t5nv"]
+
+[ext_resource type="Script" uid="uid://c0ti7dih6pkmg" path="res://Weapons/ranged_weapon.gd" id="1_6rjjl"]
+
+[node name="RangedWeapon" type="Node3D"]
+script = ExtResource("1_6rjjl")
+
+[node name="CooldownTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -100)

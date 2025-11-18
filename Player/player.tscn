@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://f22au7be1on2"]
+[gd_scene load_steps=17 format=3 uid="uid://f22au7be1on2"]
 
 [ext_resource type="Script" uid="uid://f4qga21ey647" path="res://Player/player.gd" id="1_l8h54"]
 [ext_resource type="Script" uid="uid://6obxm53fjk5r" path="res://Player/smooth_camera.gd" id="2_4ntmi"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cg21gi7aems0j" path="res://Weapons/club.tscn" id="4_00tjw"]
 [ext_resource type="Script" uid="uid://ocrdiea6xgou" path="res://Levels/crosshair.gd" id="4_gwnis"]
 [ext_resource type="Texture2D" uid="uid://cmtmfwb6m25d0" path="res://Player/damage.png" id="5_k53q1"]
+[ext_resource type="PackedScene" uid="uid://nyqcy273ngn" path="res://Weapons/olive_projectile_weapon.tscn" id="5_x3vf3"]
 [ext_resource type="Script" uid="uid://6yv0u7ame6lq" path="res://Player/ammo_handler.gd" id="6_00tjw"]
 [ext_resource type="PackedScene" uid="uid://dkuxinwnlda42" path="res://Player/game_over_menu.tscn" id="6_fhl08"]
 [ext_resource type="FontFile" uid="uid://dusmamaheo07n" path="res://Assets/Jacquard24-Regular.ttf" id="9_x3vf3"]
@@ -130,6 +131,10 @@ weapon_1 = NodePath("Club")
 [node name="Club" parent="SubViewportContainer/SubViewport/WeaponCamera/WeaponHandler" node_paths=PackedStringArray("ammo_handler") instance=ExtResource("4_00tjw")]
 ammo_handler = NodePath("../../AmmoHandler")
 
+[node name="OliveProjectileWeapon" parent="SubViewportContainer/SubViewport/WeaponCamera/WeaponHandler" node_paths=PackedStringArray("ammo_handler") instance=ExtResource("5_x3vf3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.24081)
+ammo_handler = NodePath("../../AmmoHandler")
+
 [node name="AmmoHandler" type="Node" parent="SubViewportContainer/SubViewport/WeaponCamera" node_paths=PackedStringArray("ammo_label", "weapon_handler")]
 unique_name_in_owner = true
 script = ExtResource("6_00tjw")
@@ -187,5 +192,3 @@ label_settings = SubResource("LabelSettings_apopc")
 [node name="GameOverMenu" parent="." instance=ExtResource("6_fhl08")]
 process_mode = 3
 visible = false
-
-[node name="Club" parent="." instance=ExtResource("4_00tjw")]

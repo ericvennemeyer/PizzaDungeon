@@ -33,4 +33,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.86022, 0.639993, 13.8916)
 attack_damage = 5
 
 [node name="Player" parent="." instance=ExtResource("2_nq0nm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, 16)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, 19)

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://nyqcy273ngn"]
+
+[ext_resource type="PackedScene" uid="uid://bjvjua134t5nv" path="res://Weapons/ranged_weapon.tscn" id="1_oera7"]
+
+[node name="OliveProjectileWeapon" instance=ExtResource("1_oera7")]
