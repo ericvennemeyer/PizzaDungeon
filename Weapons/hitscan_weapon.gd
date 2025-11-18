@@ -32,6 +32,10 @@ func _process(delta: float) -> void:
 	weapon_mesh.position = weapon_mesh.position.lerp(weapon_start_position, delta * 10.0)
 
 
+#func _input(event: InputEvent) -> void:
+	# Going to need to read attack input here for web build
+
+
 func shoot() -> void:
 	if ammo_handler.has_ammo(ammo_type):
 		ammo_handler.use_ammo(ammo_type)

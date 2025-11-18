@@ -34,7 +34,9 @@ var weapon_zoom_speed: float = 20.0
 
 
 func _ready() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	pass
+	# Switching mouse mode is now handled in _input so it will work with web build
+	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
 func _process(delta: float) -> void:
