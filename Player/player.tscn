@@ -1,10 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://f22au7be1on2"]
+[gd_scene load_steps=16 format=3 uid="uid://f22au7be1on2"]
 
 [ext_resource type="Script" uid="uid://f4qga21ey647" path="res://Player/player.gd" id="1_l8h54"]
 [ext_resource type="Script" uid="uid://6obxm53fjk5r" path="res://Player/smooth_camera.gd" id="2_4ntmi"]
-[ext_resource type="PackedScene" uid="uid://b6pdatn6a250g" path="res://Weapons/SMG.tscn" id="3_btcbx"]
-[ext_resource type="PackedScene" uid="uid://tguwx1vs6urv" path="res://Weapons/Rifle.tscn" id="3_fhl08"]
 [ext_resource type="Script" uid="uid://iqw5yv0t6fi" path="res://Player/weapon_handler.gd" id="3_od3ui"]
+[ext_resource type="PackedScene" uid="uid://cg21gi7aems0j" path="res://Weapons/club.tscn" id="4_00tjw"]
 [ext_resource type="Script" uid="uid://ocrdiea6xgou" path="res://Levels/crosshair.gd" id="4_gwnis"]
 [ext_resource type="Texture2D" uid="uid://cmtmfwb6m25d0" path="res://Player/damage.png" id="5_k53q1"]
 [ext_resource type="Script" uid="uid://6yv0u7ame6lq" path="res://Player/ammo_handler.gd" id="6_00tjw"]
@@ -123,18 +122,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
 cull_mask = 2
 fov = 40.0
 
-[node name="WeaponHandler" type="Node3D" parent="SubViewportContainer/SubViewport/WeaponCamera" node_paths=PackedStringArray("weapon_1", "weapon_2")]
+[node name="WeaponHandler" type="Node3D" parent="SubViewportContainer/SubViewport/WeaponCamera" node_paths=PackedStringArray("weapon_1")]
 unique_name_in_owner = true
 script = ExtResource("3_od3ui")
-weapon_1 = NodePath("Rifle")
-weapon_2 = NodePath("SMG")
+weapon_1 = NodePath("Club")
 
-[node name="Rifle" parent="SubViewportContainer/SubViewport/WeaponCamera/WeaponHandler" node_paths=PackedStringArray("ammo_handler") instance=ExtResource("3_fhl08")]
+[node name="Club" parent="SubViewportContainer/SubViewport/WeaponCamera/WeaponHandler" node_paths=PackedStringArray("ammo_handler") instance=ExtResource("4_00tjw")]
 ammo_handler = NodePath("../../AmmoHandler")
-
-[node name="SMG" parent="SubViewportContainer/SubViewport/WeaponCamera/WeaponHandler" node_paths=PackedStringArray("ammo_handler") instance=ExtResource("3_btcbx")]
-ammo_handler = NodePath("../../AmmoHandler")
-ammo_type = 1
 
 [node name="AmmoHandler" type="Node" parent="SubViewportContainer/SubViewport/WeaponCamera" node_paths=PackedStringArray("ammo_label", "weapon_handler")]
 unique_name_in_owner = true

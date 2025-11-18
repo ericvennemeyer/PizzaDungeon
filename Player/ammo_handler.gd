@@ -8,12 +8,14 @@ extends Node
 
 enum ammo_type {
 	BULLET,
-	SMALL_BULLET
+	SMALL_BULLET,
+	NONE
 }
 
 var ammo_storage: Dictionary[int, int] = {
 	ammo_type.BULLET: 10,
-	ammo_type.SMALL_BULLET: 60
+	ammo_type.SMALL_BULLET: 60,
+	ammo_type.NONE: 0
 }
 
 

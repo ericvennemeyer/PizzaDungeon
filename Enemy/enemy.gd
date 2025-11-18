@@ -14,6 +14,7 @@ var aggro_range:float = 12.0
 var hitpoints: int = max_hitpoints:
 	set(value):
 		hitpoints = value
+		print(hitpoints)
 		if hitpoints <= 0:
 			queue_free()
 		provoked = true

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cg21gi7aems0j"]
+
+[ext_resource type="PackedScene" uid="uid://dj1uxjtjuacce" path="res://Weapons/melee_weapon.tscn" id="1_ymweh"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ymweh"]
+size = Vector3(0.2, 0.2, 2)
+
+[node name="Club" node_paths=PackedStringArray("weapon_mesh") instance=ExtResource("1_ymweh")]
+weapon_mesh = NodePath("TempClub")
+
+[node name="TempClub" type="MeshInstance3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.737591, -0.316917, -2.03485)
+layers = 2
+mesh = SubResource("BoxMesh_ymweh")
