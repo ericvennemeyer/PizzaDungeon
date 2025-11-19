@@ -12,8 +12,8 @@ enum EnemyState {
 @export var investigate_duration: float = 2.0
 var investigate_timer: float = 0.0
 
-@export var knockback_force: float = 10.0
-@export var knockback_duration: float = 0.5
+@export var knockback_force: float = 2.5
+@export var knockback_duration: float = 0.25
 var knockback_timer: float = 0.0
 var knockback_direction: Vector3 = Vector3.ZERO
 
@@ -43,6 +43,9 @@ var state_change_timer: float = 0.0
 
 var wander_time: float = 0.0
 var wander_direction: Vector3
+
+#var target_angle: float = 0.0 # Desired Y-axis rotation in radians
+#var rotation_speed: float = TAU # Radians per second
 
 @onready var temp_body: MeshInstance3D = $TempBody
 @onready var state_label: Label3D = $StateLabel
@@ -154,6 +157,15 @@ func look_at_target(direction: Vector3) -> void:
 	var adjusted_direction = direction
 	adjusted_direction.y = 0
 	look_at(global_position + adjusted_direction, Vector3.UP, true)
+
+
+#func smooth_look_at(delta) -> void:
+	## Calculate the current Y-axis rotation
+	#var current_angle = transform.basis.get_euler().y
+	## Smoothly interpolate towards the target angle
+	#var new_angle = lerp_angle(current_angle, target_angle, rotation_speed * delta)
+	## Apply the new rotation to the object's transform
+	#transform.basis = Basis.from_euler(Vector3(transform.basis.get_euler().x, new_angle, transform.basis.get_euler().z))
 
 
 func randomize_wander_variables() -> void:
