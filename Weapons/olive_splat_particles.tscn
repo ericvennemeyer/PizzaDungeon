@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://ekkh4g4qob1b"]
+
+[ext_resource type="Script" uid="uid://drb2dsw162wv3" path="res://Weapons/olive_splat_particles.gd" id="1_dkyax"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_07d3e"]
+albedo_color = Color(0.192157, 0.266667, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_07d3e"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="Curve" id="Curve_07d3e"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="OliveSplatParticles" type="CPUParticles3D"]
+top_level = true
+material_override = SubResource("StandardMaterial3D_07d3e")
+emitting = false
+amount = 20
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("BoxMesh_07d3e")
+direction = Vector3(0, 1, 0)
+gravity = Vector3(0, -4, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 3.0
+scale_amount_min = 0.01
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_07d3e")
+script = ExtResource("1_dkyax")

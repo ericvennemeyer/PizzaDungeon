@@ -14,6 +14,7 @@ radius = 0.1
 height = 0.2
 
 [node name="OliveProjectile" type="RigidBody3D"]
+mass = 0.5
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_pq7d0")

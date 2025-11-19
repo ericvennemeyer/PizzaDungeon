@@ -3,6 +3,8 @@ extends RigidBody3D
 
 signal splatted(olive_instance)
 
+@export var splat_particles = preload("res://Weapons/olive_splat_particles.tscn")
+
 var launch_speed: float = 5.0
 
 
@@ -13,5 +15,9 @@ func _ready() -> void:
 
 
 func _on_body_entered(_body: Node) -> void:
+	var particles = splat_particles.instantiate()
+	get_tree().get_root().add_child(particles)
+	particles.global_position = global_position
+	particles.emitting = true
 	splatted.emit(self)
 	queue_free()
