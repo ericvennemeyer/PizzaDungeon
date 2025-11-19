@@ -11,6 +11,11 @@ enum EnemyState {
 
 @export var investigating_time: float = 2.0
 
+@export var knockback_force: float = 10.0
+@export var knockback_duration: float = 0.5
+var knockback_timer: float = 0.0
+var knockback_direction: Vector3 = Vector3.ZERO
+
 @export var speed: float = 5.0
 @export var aggro_range: float = 12.0
 @export var attack_range: float = 1.5
@@ -24,6 +29,7 @@ var alerted: bool = false # alerted is for Olives
 var hitpoints: int = max_hitpoints:
 	set(value):
 		hitpoints = value
+		apply_knockback()
 		print(hitpoints)
 		if hitpoints <= 0:
 			queue_free()
@@ -92,7 +98,8 @@ func _physics_process(delta: float) -> void:
 	if current_state == EnemyState.Provoked and distance_to_player <= attack_range:
 		attack()
 	
-	if direction:
+	
+	if direction and knockback_timer <= 0.0:
 		look_at_target(direction)
 		#target_angle_y = direction.y
 		velocity.x = direction.x * speed
@@ -100,6 +107,11 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
+
+	if knockback_timer > 0.0:
+		velocity += knockback_direction * knockback_force
+		knockback_timer -= delta
+		
 
 	move_and_slide()
 
@@ -119,6 +131,12 @@ func look_at_target(direction: Vector3) -> void:
 	var adjusted_direction = direction
 	adjusted_direction.y = 0
 	look_at(global_position + adjusted_direction, Vector3.UP, true)
+
+
+func apply_knockback() -> void:
+	knockback_direction = player.global_position.direction_to(global_position).normalized()
+	knockback_direction.y = 0
+	knockback_timer = knockback_duration
 
 
 func attack() -> void:
