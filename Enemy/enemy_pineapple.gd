@@ -2,6 +2,15 @@ class_name EnemyPineapple
 extends CharacterBody3D
 
 
+enum EnemyState {
+	Patrolling,
+	Alerted,
+	Investigating,
+	Provoked
+}
+
+@export var investigating_time: float = 2.0
+
 @export var speed: float = 5.0
 @export var aggro_range: float = 12.0
 @export var attack_range: float = 1.5
@@ -18,12 +27,16 @@ var hitpoints: int = max_hitpoints:
 		print(hitpoints)
 		if hitpoints <= 0:
 			queue_free()
-		provoked = true
+		change_state(EnemyState.Provoked)
+
+var current_state: EnemyState
+var state_change_timer: float = 0.0
 
 #var target_angle_y: float
 #var rotation_speed: float = 2.0
 
 @onready var temp_body: MeshInstance3D = $TempBody
+@onready var state_label: Label3D = $StateLabel
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
 @onready var olive_detector_area_3d: Area3D = $OliveDetectorArea3D
 
@@ -31,14 +44,29 @@ var hitpoints: int = max_hitpoints:
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
 	olive_detector_area_3d.body_entered.connect(_on_olive_detector_body_entered)
+	change_state(EnemyState.Patrolling)
+
+
+func change_state(new_state: EnemyState) -> void:
+	current_state = new_state
+	match current_state:
+		EnemyState.Patrolling:
+			state_label.text = "Patrolling"
+		EnemyState.Alerted:
+			state_label.text = "Alerted"
+		EnemyState.Investigating:
+			state_label.text = "Investigating"
+		EnemyState.Provoked:
+			state_label.text = "Provoked"
 
 
 func _process(delta: float) -> void:
-	if alerted:
-		navigation_agent_3d.target_position = olive_splat_position
-	if provoked:
-		navigation_agent_3d.target_position = player.global_position
-		olive_splat_position = Vector3.ZERO # remove last saved instance of an olive if enemy notices player
+	match current_state:
+		EnemyState.Alerted:
+			navigation_agent_3d.target_position = olive_splat_position
+		EnemyState.Provoked:
+			navigation_agent_3d.target_position = player.global_position
+			olive_splat_position = Vector3.ZERO # remove last saved instance of an olive if enemy notices player
 	
 	## Calculate the current Y-axis rotation
 	#var current_angle = transform.basis.get_euler().y
@@ -59,10 +87,9 @@ func _physics_process(delta: float) -> void:
 	var distance_to_player = global_position.distance_to(player.global_position)
 	
 	if distance_to_player <= aggro_range:
-		provoked = true
-		alerted = false # player takes priority over olive
+		change_state(EnemyState.Provoked)
 	
-	if provoked and distance_to_player <= attack_range:
+	if current_state == EnemyState.Provoked and distance_to_player <= attack_range:
 		attack()
 	
 	if direction:
@@ -85,7 +112,7 @@ func _on_olive_detector_body_entered(body: Node) -> void:
 func _on_olive_splatted(olive_instance: OliveProjectile) -> void:
 	print("I heard an olive at " + str(olive_instance.global_position))
 	olive_splat_position = olive_instance.global_position
-	alerted = true
+	change_state(EnemyState.Alerted)
 
 
 func look_at_target(direction: Vector3) -> void:

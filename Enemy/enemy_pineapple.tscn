@@ -49,3 +49,10 @@ debug_path_custom_color = Color(1, 0, 0, 1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="OliveDetectorArea3D"]
 shape = SubResource("SphereShape3D_cu181")
+
+[node name="StateLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22934, 0)
+billboard = 1
+text = "STATE"
+font_size = 48
+outline_size = 8
