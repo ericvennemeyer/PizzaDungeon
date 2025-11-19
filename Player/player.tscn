@@ -133,6 +133,7 @@ ammo_handler = NodePath("../../AmmoHandler")
 
 [node name="OliveProjectileWeapon" parent="SubViewportContainer/SubViewport/WeaponCamera/WeaponHandler" node_paths=PackedStringArray("ammo_handler") instance=ExtResource("5_x3vf3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.24081)
+projectile_speed = 8.0
 ammo_handler = NodePath("../../AmmoHandler")
 
 [node name="AmmoHandler" type="Node" parent="SubViewportContainer/SubViewport/WeaponCamera" node_paths=PackedStringArray("ammo_label", "weapon_handler")]

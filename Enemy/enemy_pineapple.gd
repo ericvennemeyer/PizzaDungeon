@@ -9,7 +9,9 @@ extends CharacterBody3D
 @export var attack_damage: int = 20
 
 var player: Player
-var provoked: bool = false
+var olive_splat_position: Vector3
+var provoked: bool = false # provoked is for Player
+var alerted: bool = false # alerted is for Olives
 var hitpoints: int = max_hitpoints:
 	set(value):
 		hitpoints = value
@@ -18,20 +20,25 @@ var hitpoints: int = max_hitpoints:
 			queue_free()
 		provoked = true
 
-var target_angle_y: float
-var rotation_speed: float = 2.0
+#var target_angle_y: float
+#var rotation_speed: float = 2.0
 
 @onready var temp_body: MeshInstance3D = $TempBody
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
+@onready var olive_detector_area_3d: Area3D = $OliveDetectorArea3D
 
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
+	olive_detector_area_3d.body_entered.connect(_on_olive_detector_body_entered)
 
 
 func _process(delta: float) -> void:
+	if alerted:
+		navigation_agent_3d.target_position = olive_splat_position
 	if provoked:
 		navigation_agent_3d.target_position = player.global_position
+		olive_splat_position = Vector3.ZERO # remove last saved instance of an olive if enemy notices player
 	
 	## Calculate the current Y-axis rotation
 	#var current_angle = transform.basis.get_euler().y
@@ -53,6 +60,7 @@ func _physics_process(delta: float) -> void:
 	
 	if distance_to_player <= aggro_range:
 		provoked = true
+		alerted = false # player takes priority over olive
 	
 	if provoked and distance_to_player <= attack_range:
 		attack()
@@ -67,6 +75,17 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, speed)
 
 	move_and_slide()
+
+
+func _on_olive_detector_body_entered(body: Node) -> void:
+	if body is OliveProjectile:
+		body.splatted.connect(_on_olive_splatted)
+
+
+func _on_olive_splatted(olive_instance: OliveProjectile) -> void:
+	print("I heard an olive at " + str(olive_instance.global_position))
+	olive_splat_position = olive_instance.global_position
+	alerted = true
 
 
 func look_at_target(direction: Vector3) -> void:

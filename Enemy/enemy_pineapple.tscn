@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cjjnmjin8jxfi"]
+[gd_scene load_steps=8 format=3 uid="uid://cjjnmjin8jxfi"]
 
 [ext_resource type="Script" uid="uid://btod8ltthy1kx" path="res://Enemy/enemy_pineapple.gd" id="1_cu181"]
 
@@ -23,6 +23,9 @@ size = Vector3(0.3, 0.1, 0.2)
 radius = 0.25
 height = 1.0
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_cu181"]
+radius = 6.0
+
 [node name="EnemyPineapple" type="CharacterBody3D"]
 script = ExtResource("1_cu181")
 
@@ -41,3 +44,8 @@ shape = SubResource("CapsuleShape3D_cu181")
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 debug_enabled = true
 debug_path_custom_color = Color(1, 0, 0, 1)
+
+[node name="OliveDetectorArea3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OliveDetectorArea3D"]
+shape = SubResource("SphereShape3D_cu181")
