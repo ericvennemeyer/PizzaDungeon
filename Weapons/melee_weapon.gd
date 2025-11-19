@@ -46,7 +46,7 @@ func shoot() -> void:
 	var collider = ray_cast_3d.get_collider()
 	printt("Weapon Fired!", collider)
 	if ray_cast_3d.is_colliding():
-		if collider is Enemy:
+		if collider is EnemyPineapple:
 			collider.hitpoints -= weapon_damage
 			print("Damaged Enemy!")
 		#var spark = sparks.instantiate()

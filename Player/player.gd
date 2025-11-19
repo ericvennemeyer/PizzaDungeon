@@ -15,7 +15,7 @@ var hitpoints: int = max_hitpoints:
 			damage_animation_player.stop(false)
 			damage_animation_player.play("TakeDamage")
 		hitpoints = value
-		print(hitpoints)
+		#print(hitpoints)
 		if hitpoints <= 0:
 			game_over_menu.game_over()
 var weapon_zoom_speed: float = 20.0
