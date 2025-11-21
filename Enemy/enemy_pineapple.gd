@@ -51,6 +51,7 @@ var wander_direction: Vector3
 @onready var state_label: Label3D = $StateLabel
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
 @onready var olive_detector_area_3d: Area3D = $OliveDetectorArea3D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
 func _ready() -> void:
@@ -174,6 +175,7 @@ func randomize_wander_variables() -> void:
 
 
 func apply_knockback() -> void:
+	animation_player.play("stagger")
 	knockback_direction = player.global_position.direction_to(global_position).normalized()
 	knockback_direction.y = 0
 	knockback_timer = knockback_duration
