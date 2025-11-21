@@ -1,14 +1,95 @@
-[gd_scene load_steps=3 format=3 uid="uid://cg21gi7aems0j"]
+[gd_scene load_steps=7 format=3 uid="uid://cg21gi7aems0j"]
 
 [ext_resource type="PackedScene" uid="uid://dj1uxjtjuacce" path="res://Weapons/melee_weapon.tscn" id="1_ymweh"]
+[ext_resource type="PackedScene" uid="uid://dltxcn1vu1183" path="res://Weapons/sparks.tscn" id="2_ix5jr"]
+[ext_resource type="ArrayMesh" uid="uid://855ohaopdiag" path="res://Weapons/rolling_pin.res" id="2_yit3h"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_ymweh"]
-size = Vector3(0.2, 0.2, 2)
+[sub_resource type="Animation" id="Animation_yit3h"]
+resource_name = "swing_club"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RollingPin:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.4, 0.6),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2),
+"update": 0,
+"values": [Vector3(0.980082, -1.20659, -1.30102), Vector3(0.980082, -1.06576, -1.30102), Vector3(0.980082, -1.36263, -1.4799), Vector3(0.980082, -1.36263, -1.4799), Vector3(0.980082, -1.20659, -1.30102)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RollingPin:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.4, 0.6),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2),
+"update": 0,
+"values": [Vector3(0.627487, -2.92043, 3.00295), Vector3(0.146463, -2.93706, 3.04866), Vector3(1.03838, -2.84127, 3.02003), Vector3(1.03838, -2.84127, 3.02003), Vector3(0.627487, -2.92043, 3.00295)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"do_damage"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ix5jr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RollingPin:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.980082, -1.20659, -1.30102)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RollingPin:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.627487, -2.92043, 3.00295)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ix5jr"]
+_data = {
+&"RESET": SubResource("Animation_ix5jr"),
+&"swing_club": SubResource("Animation_yit3h")
+}
 
 [node name="Club" node_paths=PackedStringArray("weapon_mesh") instance=ExtResource("1_ymweh")]
-weapon_mesh = NodePath("TempClub")
+weapon_mesh = NodePath("RollingPin")
+sparks = ExtResource("2_ix5jr")
 
-[node name="TempClub" type="MeshInstance3D" parent="." index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.737591, -0.316917, -2.03485)
+[node name="RollingPin" type="MeshInstance3D" parent="." index="2"]
+transform = Transform3D(1.43221, 0.3962, -0.268137, 0.168924, -1.21062, -0.88654, -0.447589, 0.810872, -1.19258, 0.980082, -1.20659, -1.30102)
 layers = 2
-mesh = SubResource("BoxMesh_ymweh")
+mesh = ExtResource("2_yit3h")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+libraries = {
+&"": SubResource("AnimationLibrary_ix5jr")
+}

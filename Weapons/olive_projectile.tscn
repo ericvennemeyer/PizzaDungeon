@@ -1,17 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bj3cuwnawlyyr"]
+[gd_scene load_steps=4 format=3 uid="uid://bj3cuwnawlyyr"]
 
 [ext_resource type="Script" uid="uid://bfx720r11q1ca" path="res://Weapons/olive_projectile.gd" id="1_pq7d0"]
+[ext_resource type="ArrayMesh" uid="uid://dxy2w01xlshpf" path="res://Weapons/black_olive.res" id="2_t4k81"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qy02c"]
 radius = 0.10231
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mpkly"]
-albedo_color = Color(0.136729, 0.139654, 0.0565566, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_0yw6c"]
-material = SubResource("StandardMaterial3D_mpkly")
-radius = 0.1
-height = 0.2
 
 [node name="OliveProjectile" type="RigidBody3D"]
 mass = 0.5
@@ -22,5 +15,6 @@ script = ExtResource("1_pq7d0")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_qy02c")
 
-[node name="TempOlive" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_0yw6c")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.73463, 0, -0.316731, 0, 0.8, 0, 0.316731, 0, 0.73463, 0, 0, 0)
+mesh = ExtResource("2_t4k81")
