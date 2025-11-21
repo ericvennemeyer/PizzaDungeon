@@ -12,8 +12,8 @@ enum EnemyState {
 @export var investigate_duration: float = 2.0
 var investigate_timer: float = 0.0
 
-@export var knockback_force: float = 2.5
-@export var knockback_duration: float = 0.25
+@export var knockback_force: float = 4.0
+@export var knockback_duration: float = 0.2
 var knockback_timer: float = 0.0
 var knockback_direction: Vector3 = Vector3.ZERO
 
@@ -22,6 +22,7 @@ var knockback_direction: Vector3 = Vector3.ZERO
 @export var aggro_range: float = 12.0
 @export var attack_range: float = 1.5
 @export var max_hitpoints: int = 100
+@export var attack_cooldown_duration: float = 1.0
 @export var attack_damage: int = 20
 
 var player: Player
@@ -39,8 +40,8 @@ var hitpoints: int = max_hitpoints:
 		change_state(EnemyState.Provoked)
 
 var current_state: EnemyState
-var state_change_timer: float = 0.0
-
+#var state_change_timer: float = 0.0
+var attack_timer: float = 0.0
 var wander_time: float = 0.0
 var wander_direction: Vector3
 
@@ -77,6 +78,8 @@ func change_state(new_state: EnemyState) -> void:
 
 
 func _process(delta: float) -> void:
+	attack_timer -= delta
+	
 	match current_state:
 		EnemyState.Wander:
 			if wander_time <= 0.0:
@@ -122,7 +125,7 @@ func _physics_process(delta: float) -> void:
 				velocity.z = move_toward(velocity.z, 0, speed)
 		
 		EnemyState.Provoked:
-			if distance_to_player <= attack_range:
+			if distance_to_player <= attack_range and attack_timer <= 0.0:
 				attack()
 	
 			var next_position = navigation_agent_3d.get_next_path_position()
@@ -182,6 +185,7 @@ func apply_knockback() -> void:
 
 
 func attack() -> void:
+	attack_timer = attack_cooldown_duration
 	player.hitpoints -= attack_damage
 
 

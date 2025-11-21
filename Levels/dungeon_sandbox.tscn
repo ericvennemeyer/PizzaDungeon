@@ -39,7 +39,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, 39)
 [node name="EnemyPineapple" parent="." instance=ExtResource("4_ovg2e")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0, 33)
 aggro_range = 5.0
-attack_damage = 0
+attack_damage = 10
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_o7ysn")

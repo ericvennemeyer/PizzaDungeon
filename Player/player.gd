@@ -15,7 +15,7 @@ var hitpoints: int = max_hitpoints:
 			damage_animation_player.stop(false)
 			damage_animation_player.play("TakeDamage")
 		hitpoints = value
-		#print(hitpoints)
+		health_progress_bar.value = hitpoints
 		if hitpoints <= 0:
 			game_over_menu.game_over()
 var weapon_zoom_speed: float = 20.0
@@ -28,13 +28,13 @@ var weapon_zoom_speed: float = 20.0
 #@onready var weapon_handler: Node3D = %WeaponHandler
 @onready var smooth_camera: Camera3D = %SmoothCamera
 @onready var weapon_camera: Camera3D = %WeaponCamera
-
 @onready var smooth_camera_fov := smooth_camera.fov
 @onready var weapon_camera_fov := weapon_camera.fov
+@onready var health_progress_bar: ProgressBar = $MarginContainer/HealthProgressBar
 
 
 func _ready() -> void:
-	pass
+	health_progress_bar.value = hitpoints
 	# Switching mouse mode is now handled in _input so it will work with web build
 	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 

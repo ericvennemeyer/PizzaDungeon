@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://f22au7be1on2"]
+[gd_scene load_steps=19 format=3 uid="uid://f22au7be1on2"]
 
 [ext_resource type="Script" uid="uid://f4qga21ey647" path="res://Player/player.gd" id="1_l8h54"]
 [ext_resource type="Script" uid="uid://6obxm53fjk5r" path="res://Player/smooth_camera.gd" id="2_4ntmi"]
@@ -80,6 +80,12 @@ _data = {
 [sub_resource type="LabelSettings" id="LabelSettings_apopc"]
 font = ExtResource("9_x3vf3")
 font_size = 96
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_apopc"]
+bg_color = Color(0.13, 0.13, 0.13, 0.54902)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x3vf3"]
+bg_color = Color(0.69, 0, 0, 1)
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_l8h54")
@@ -178,10 +184,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_constants/margin_left = 8
+theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_bottom = 20
 
 [node name="AmmoLabel" type="Label" parent="MarginContainer"]
 layout_mode = 2
@@ -189,6 +195,17 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "999"
 label_settings = SubResource("LabelSettings_apopc")
+
+[node name="HealthProgressBar" type="ProgressBar" parent="MarginContainer"]
+custom_minimum_size = Vector2(200, 25)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_styles/background = SubResource("StyleBoxFlat_apopc")
+theme_override_styles/fill = SubResource("StyleBoxFlat_x3vf3")
+step = 1.0
+value = 50.0
+show_percentage = false
 
 [node name="GameOverMenu" parent="." instance=ExtResource("6_fhl08")]
 process_mode = 3

@@ -32,7 +32,6 @@ func shoot() -> void:
 	cooldown_timer.start(1.0 / fire_rate)
 
 
-
 func do_damage() -> void:
 	if ray_cast_3d.is_colliding():
 		var collider = ray_cast_3d.get_collider()
