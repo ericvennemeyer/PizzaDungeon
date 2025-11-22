@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://c868giojhx5pw"]
+
+[ext_resource type="ArrayMesh" uid="uid://bh2tv57n37clp" path="res://Items/treasure_chest_top.res" id="1_nwcol"]
+[ext_resource type="ArrayMesh" uid="uid://1hvqu86o7f4i" path="res://Items/treasure_chesst_bottom.res" id="2_yhc08"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nwcol"]
+size = Vector3(0.801758, 0.920898, 1)
+
+[sub_resource type="Animation" id="Animation_nwcol"]
+resource_name = "open"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Top:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -1.21944)]
+}
+
+[sub_resource type="Animation" id="Animation_yhc08"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Top:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0qmon"]
+_data = {
+&"RESET": SubResource("Animation_yhc08"),
+&"open": SubResource("Animation_nwcol")
+}
+
+[node name="TreasureChest" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.462921, 0)
+shape = SubResource("BoxShape3D_nwcol")
+
+[node name="Top" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.412179, 0.541148, 0)
+mesh = ExtResource("1_nwcol")
+
+[node name="Bottom" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_yhc08")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_0qmon")
+}
