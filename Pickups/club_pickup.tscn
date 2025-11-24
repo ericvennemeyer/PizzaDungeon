@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmlr007eujfla"]
+
+[ext_resource type="PackedScene" uid="uid://cn0btimh4fxf" path="res://Pickups/pickup.tscn" id="1_58xv4"]
+
+[node name="ClubPickup" instance=ExtResource("1_58xv4")]
+item_name = "Club"
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "float_up"

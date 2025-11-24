@@ -31,6 +31,7 @@ var weapon_zoom_speed: float = 20.0
 @onready var smooth_camera_fov := smooth_camera.fov
 @onready var weapon_camera_fov := weapon_camera.fov
 @onready var health_progress_bar: ProgressBar = $MarginContainer/HealthProgressBar
+@onready var weapon_handler: Node3D = %WeaponHandler
 
 
 func _ready() -> void:

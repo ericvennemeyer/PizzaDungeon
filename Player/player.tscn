@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://f22au7be1on2"]
+[gd_scene load_steps=21 format=3 uid="uid://f22au7be1on2"]
 
 [ext_resource type="Script" uid="uid://f4qga21ey647" path="res://Player/player.gd" id="1_l8h54"]
 [ext_resource type="Script" uid="uid://6obxm53fjk5r" path="res://Player/smooth_camera.gd" id="2_4ntmi"]
+[ext_resource type="Script" uid="uid://4l03pjcqqt3y" path="res://Player/interaction_ray_cast.gd" id="3_apopc"]
 [ext_resource type="Script" uid="uid://iqw5yv0t6fi" path="res://Player/weapon_handler.gd" id="3_od3ui"]
 [ext_resource type="PackedScene" uid="uid://cg21gi7aems0j" path="res://Weapons/club.tscn" id="4_00tjw"]
 [ext_resource type="Script" uid="uid://ocrdiea6xgou" path="res://Levels/crosshair.gd" id="4_gwnis"]
@@ -14,6 +15,11 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_l3kh5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d3736"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5htga"]
+font_size = 32
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_fhl08"]
 length = 0.001
@@ -108,6 +114,28 @@ script = ExtResource("2_4ntmi")
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="CameraPivot/SmoothCamera"]
 remote_path = NodePath("../../../SubViewportContainer/SubViewport/WeaponCamera")
+
+[node name="InteractionRayCast" type="RayCast3D" parent="CameraPivot/SmoothCamera"]
+target_position = Vector3(0, 0, -5)
+script = ExtResource("3_apopc")
+
+[node name="MarginContainer" type="MarginContainer" parent="CameraPivot/SmoothCamera/InteractionRayCast"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme_override_constants/margin_bottom = 150
+
+[node name="PromptLabel" type="Label" parent="CameraPivot/SmoothCamera/InteractionRayCast/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "You Found An Item"
+label_settings = SubResource("LabelSettings_5htga")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 anchors_preset = 15

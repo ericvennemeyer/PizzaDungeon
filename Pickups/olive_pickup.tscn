@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://1gmlgpgm0oag"]
+
+[ext_resource type="PackedScene" uid="uid://cn0btimh4fxf" path="res://Pickups/pickup.tscn" id="1_u68q7"]
+[ext_resource type="ArrayMesh" uid="uid://dxy2w01xlshpf" path="res://Weapons/black_olive.res" id="2_uthsy"]
+
+[node name="OlivePickup" instance=ExtResource("1_u68q7")]
+item_name = "OliveProjectileWeapon"
+
+[node name="ItemMesh" parent="." index="0"]
+mesh = null
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ItemMesh" index="1"]
+transform = Transform3D(0.0381213, 1.42517, -0.466312, 0.899845, 0.351397, 1.14752, 1.19951, -0.308902, -0.846022, -0.0923297, -0.310142, 0.113195)
+mesh = ExtResource("2_uthsy")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="ItemMesh" index="2"]
+transform = Transform3D(0.0256245, 0.371152, -1.45313, -1.08487, 1.0081, 0.238352, 1.03557, 1.0469, 0.285654, -0.126912, -0.641143, 0.0213523)
+mesh = ExtResource("2_uthsy")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="ItemMesh" index="3"]
+transform = Transform3D(0.536575, 1.26681, -0.597723, 0.446826, 0.45184, 1.35874, 1.32757, -0.664098, -0.215733, 0.128866, -0.496295, -0.0364126)
+mesh = ExtResource("2_uthsy")
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "float_up"

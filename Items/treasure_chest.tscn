@@ -1,10 +1,27 @@
-[gd_scene load_steps=7 format=3 uid="uid://c868giojhx5pw"]
+[gd_scene load_steps=9 format=3 uid="uid://c868giojhx5pw"]
 
 [ext_resource type="ArrayMesh" uid="uid://bh2tv57n37clp" path="res://Items/treasure_chest_top.res" id="1_nwcol"]
-[ext_resource type="ArrayMesh" uid="uid://1hvqu86o7f4i" path="res://Items/treasure_chesst_bottom.res" id="2_yhc08"]
+[ext_resource type="Script" uid="uid://tykav0wmr7me" path="res://Items/treasure_chest.gd" id="1_yhc08"]
+[ext_resource type="PackedScene" uid="uid://bmlr007eujfla" path="res://Pickups/club_pickup.tscn" id="2_0qmon"]
+[ext_resource type="ArrayMesh" uid="uid://1hvqu86o7f4i" path="res://Items/treasure_chest_bottom.res" id="2_yhc08"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nwcol"]
 size = Vector3(0.801758, 0.920898, 1)
+
+[sub_resource type="Animation" id="Animation_yhc08"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Top:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_nwcol"]
 resource_name = "open"
@@ -22,20 +39,19 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, -1.21944)]
 }
-
-[sub_resource type="Animation" id="Animation_yhc08"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Top:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [{
+"args": [],
+"method": &"equip_item"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0qmon"]
@@ -45,6 +61,10 @@ _data = {
 }
 
 [node name="TreasureChest" type="StaticBody3D"]
+script = ExtResource("1_yhc08")
+pickup_item = ExtResource("2_0qmon")
+prompt_message = "Treasure Chest"
+prompt_input = "interact"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.462921, 0)
@@ -61,3 +81,6 @@ mesh = ExtResource("2_yhc08")
 libraries = {
 &"": SubResource("AnimationLibrary_0qmon")
 }
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.294524, 0)

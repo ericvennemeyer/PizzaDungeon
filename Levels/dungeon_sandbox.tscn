@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://qprepsngo36n"]
+[gd_scene load_steps=11 format=3 uid="uid://qprepsngo36n"]
 
 [ext_resource type="PackedScene" uid="uid://b7jp36he6oqf6" path="res://Levels/test scene from blender/modular pizza dungeon_test scene.glb" id="1_4wt11"]
 [ext_resource type="PackedScene" uid="uid://f22au7be1on2" path="res://Player/player.tscn" id="2_nq0nm"]
 [ext_resource type="Material" uid="uid://b52ebr2rphali" path="res://Levels/Materials/GrayMaterial.tres" id="4_o7ysn"]
 [ext_resource type="PackedScene" uid="uid://cjjnmjin8jxfi" path="res://Enemy/enemy_pineapple.tscn" id="4_ovg2e"]
+[ext_resource type="PackedScene" uid="uid://c868giojhx5pw" path="res://Items/treasure_chest.tscn" id="5_ovg2e"]
+[ext_resource type="PackedScene" uid="uid://1gmlgpgm0oag" path="res://Pickups/olive_pickup.tscn" id="6_wgs1j"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4wt11"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -76,3 +78,10 @@ use_collision = true
 flip_faces = true
 size = Vector3(12, 5, 13)
 material = ExtResource("4_o7ysn")
+
+[node name="TreasureChest" parent="." instance=ExtResource("5_ovg2e")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 14, 0, 35)
+
+[node name="TreasureChest2" parent="." instance=ExtResource("5_ovg2e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 39)
+pickup_item = ExtResource("6_wgs1j")

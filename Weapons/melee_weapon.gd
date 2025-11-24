@@ -8,6 +8,8 @@ extends Node3D
 @export var ammo_handler: AmmoHandler
 @export var ammo_type: AmmoHandler.ammo_type
 
+@export var in_inventory: bool = false
+
 @onready var cooldown_timer: Timer = $CooldownTimer
 @onready var ray_cast_3d: RayCast3D = $RayCast3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer

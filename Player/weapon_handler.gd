@@ -22,9 +22,17 @@ func _unhandled_input(event: InputEvent) -> void:
 		change_weapon(-1)
 
 
+func add_inventory(weapon_name: String) -> void:
+	for child in get_children():
+		if child.name == weapon_name:
+			child.in_inventory = true
+			equip(child)
+			break
+
+
 func equip(active_weapon: Node3D) -> void:
 	for child in get_children():
-		if child == active_weapon:
+		if child == active_weapon and child.in_inventory:
 			child.visible = true
 			child.set_process(true)
 			child.ammo_handler.update_ammo_label(child.ammo_type)
@@ -38,7 +46,9 @@ func equip(active_weapon: Node3D) -> void:
 func change_weapon(index_modifier: int) -> void:
 	var index = get_current_index()
 	index = wrapi(index + index_modifier, 0, get_child_count())
-	equip(get_child(index))
+	var next_weapon = get_child(index)
+	if next_weapon.in_inventory:
+		equip(next_weapon)
 
 
 func get_current_index() -> int:
