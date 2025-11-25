@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://crekrgwnpn08m"
+path="res://.godot/imported/Ethereal Voices Loop.wav-d6e71d93ff9038c292145e3c850aeafa.sample"
+
+[deps]
+
+source_file="res://Audio/Ambiences/Ethereal Voices Loop.wav"
+dest_files=["res://.godot/imported/Ethereal Voices Loop.wav-d6e71d93ff9038c292145e3c850aeafa.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

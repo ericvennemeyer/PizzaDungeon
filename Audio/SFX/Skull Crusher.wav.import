@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bb3m6ksdu8k5e"
+path="res://.godot/imported/Skull Crusher.wav-27bc1faf5e055bd4fbef6c273e925c78.sample"
+
+[deps]
+
+source_file="res://Audio/SFX/Skull Crusher.wav"
+dest_files=["res://.godot/imported/Skull Crusher.wav-27bc1faf5e055bd4fbef6c273e925c78.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

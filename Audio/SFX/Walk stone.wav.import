@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b0al2y4umikku"
+path="res://.godot/imported/Walk stone.wav-559a0f59a1177d01e421a3eb7b5a8053.sample"
+
+[deps]
+
+source_file="res://Audio/SFX/Walk stone.wav"
+dest_files=["res://.godot/imported/Walk stone.wav-559a0f59a1177d01e421a3eb7b5a8053.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
