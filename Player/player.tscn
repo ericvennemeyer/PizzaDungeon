@@ -116,7 +116,7 @@ script = ExtResource("2_4ntmi")
 remote_path = NodePath("../../../SubViewportContainer/SubViewport/WeaponCamera")
 
 [node name="InteractionRayCast" type="RayCast3D" parent="CameraPivot/SmoothCamera"]
-target_position = Vector3(0, 0, -5)
+target_position = Vector3(0, 0, -2)
 script = ExtResource("3_apopc")
 
 [node name="MarginContainer" type="MarginContainer" parent="CameraPivot/SmoothCamera/InteractionRayCast"]

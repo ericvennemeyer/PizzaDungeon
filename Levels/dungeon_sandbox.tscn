@@ -38,11 +38,6 @@ shadow_enabled = true
 [node name="Player" parent="." instance=ExtResource("2_nq0nm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, 39)
 
-[node name="EnemyPineapple" parent="." instance=ExtResource("4_ovg2e")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0, 33)
-aggro_range = 5.0
-attack_damage = 10
-
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_o7ysn")
 
@@ -85,3 +80,6 @@ transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 
 [node name="TreasureChest2" parent="." instance=ExtResource("5_ovg2e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 39)
 pickup_item = ExtResource("6_wgs1j")
+
+[node name="EnemyPineapple" parent="." instance=ExtResource("4_ovg2e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0139375, 38)

@@ -1,27 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cjjnmjin8jxfi"]
+[gd_scene load_steps=8 format=3 uid="uid://cjjnmjin8jxfi"]
 
 [ext_resource type="Script" uid="uid://btod8ltthy1kx" path="res://Enemy/enemy_pineapple.gd" id="1_cu181"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_54v42"]
-albedo_color = Color(0.24723, 0.383807, 0.15962, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_54v42"]
-material = SubResource("StandardMaterial3D_54v42")
-radius = 0.25
-height = 1.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cu181"]
-albedo_color = Color(1, 0, 0, 1)
-emission_enabled = true
-emission = Color(1, 0, 0, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_y4y3i"]
-material = SubResource("StandardMaterial3D_cu181")
-size = Vector3(0.3, 0.1, 0.2)
+[ext_resource type="ArrayMesh" uid="uid://bne7cgs57whqi" path="res://Enemy/pineapple enemy mesh.res" id="2_y4y3i"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cu181"]
-radius = 0.25
-height = 1.0
+radius = 0.276873
+height = 1.35495
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_cu181"]
 radius = 6.0
@@ -89,18 +73,15 @@ _data = {
 }
 
 [node name="EnemyPineapple" type="CharacterBody3D"]
+motion_mode = 1
 script = ExtResource("1_cu181")
 
 [node name="TempBody" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-mesh = SubResource("CapsuleMesh_54v42")
-
-[node name="Visor" type="MeshInstance3D" parent="TempBody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19068, 0.179741)
-mesh = SubResource("BoxMesh_y4y3i")
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5, 0)
+mesh = ExtResource("2_y4y3i")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.68301, 0)
 shape = SubResource("CapsuleShape3D_cu181")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
@@ -113,7 +94,7 @@ debug_path_custom_color = Color(1, 0, 0, 1)
 shape = SubResource("SphereShape3D_cu181")
 
 [node name="StateLabel" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22934, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.99725, 0)
 billboard = 1
 text = "STATE"
 font_size = 48

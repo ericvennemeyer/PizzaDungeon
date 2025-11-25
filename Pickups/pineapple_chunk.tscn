@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccjjqb8nion7e"]
+
+[ext_resource type="ArrayMesh" uid="uid://bk3hdfgwy4q4a" path="res://Pickups/pineapple chunk mesh.res" id="1_7ngfa"]
+
+[node name="PineappleChunk" type="RigidBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_7ngfa")

@@ -20,6 +20,3 @@ mesh = ExtResource("2_uthsy")
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="ItemMesh" index="3"]
 transform = Transform3D(0.536575, 1.26681, -0.597723, 0.446826, 0.45184, 1.35874, 1.32757, -0.664098, -0.215733, 0.128866, -0.496295, -0.0364126)
 mesh = ExtResource("2_uthsy")
-
-[node name="AnimationPlayer" parent="." index="1"]
-autoplay = "float_up"
