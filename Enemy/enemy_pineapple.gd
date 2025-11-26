@@ -6,7 +6,8 @@ enum EnemyState {
 	Wander,
 	Alerted,
 	Investigate,
-	Provoked
+	Provoked,
+	Stagger # Need add all the code for this!
 }
 
 @export var investigate_duration: float = 2.0

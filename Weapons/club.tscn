@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cg21gi7aems0j"]
 
 [ext_resource type="PackedScene" uid="uid://dj1uxjtjuacce" path="res://Weapons/melee_weapon.tscn" id="1_ymweh"]
-[ext_resource type="PackedScene" uid="uid://dltxcn1vu1183" path="res://Weapons/sparks.tscn" id="2_ix5jr"]
+[ext_resource type="PackedScene" uid="uid://deso22l0b3hg4" path="res://Weapons/enemy_hit_particles.tscn" id="2_ix5jr"]
 [ext_resource type="ArrayMesh" uid="uid://855ohaopdiag" path="res://Weapons/rolling_pin.res" id="2_yit3h"]
 
 [sub_resource type="Animation" id="Animation_ix5jr"]
