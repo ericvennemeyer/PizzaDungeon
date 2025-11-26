@@ -12,7 +12,7 @@ radius = 6.0
 
 [sub_resource type="Animation" id="Animation_y4y3i"]
 resource_name = "stagger"
-length = 0.4
+length = 0.5
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -21,10 +21,10 @@ tracks/0/path = NodePath("PineappleMesh:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.4),
-"transitions": PackedFloat32Array(-2, -2, -2),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4),
+"transitions": PackedFloat32Array(-2, -2, -2, -2),
 "update": 0,
-"values": [Vector3(0, 0.8, 0), Vector3(0, 0.8, -0.0966461), Vector3(0, 0.8, 0)]
+"values": [Vector3(0, 0.8, 0), Vector3(0, 0.8, -0.224136), Vector3(0, 0.8, -0.224136), Vector3(0, 0.8, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -33,10 +33,10 @@ tracks/1/path = NodePath("PineappleMesh:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.4),
-"transitions": PackedFloat32Array(-2, -2, -2),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4),
+"transitions": PackedFloat32Array(-2, -2, -2, -2),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-0.321943, 0, 0), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(-0.321943, 0, 0), Vector3(-0.321943, 0, 0), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_qf4o4"]
@@ -204,7 +204,6 @@ _data = {
 [node name="EnemyPineapple" type="CharacterBody3D"]
 script = ExtResource("1_cu181")
 knockback_force = 5.0
-knockback_duration = 0.1
 
 [node name="PineappleMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.8, 0)

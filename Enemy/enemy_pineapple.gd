@@ -7,7 +7,7 @@ enum EnemyState {
 	Alerted,
 	Investigate,
 	Provoked,
-	Stagger # Need add all the code for this!
+	Stagger
 }
 
 @export var investigate_duration: float = 2.0
@@ -31,11 +31,11 @@ var distance_to_player: float
 var hitpoints: int = max_hitpoints:
 	set(value):
 		hitpoints = value
-		apply_knockback()
+		change_state(EnemyState.Stagger)
 		print(hitpoints)
 		if hitpoints <= 0:
 			queue_free()
-		change_state(EnemyState.Provoked)
+		#change_state(EnemyState.Provoked)
 
 var current_state: EnemyState
 var wander_time: float = 0.0
@@ -55,6 +55,7 @@ func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
 	navigation_agent_3d.navigation_finished.connect(_on_navigation_agent_3d_navigation_finished)
 	olive_detector_area_3d.body_entered.connect(_on_olive_detector_body_entered)
+	animation_player.animation_finished.connect(_on_animation_finished)
 	change_state(EnemyState.Wander)
 
 
@@ -74,6 +75,9 @@ func change_state(new_state: EnemyState) -> void:
 			investigate_timer = investigate_duration
 		EnemyState.Provoked:
 			state_label.text = "Provoked"
+		EnemyState.Stagger:
+			apply_knockback()
+			state_label.text = "Stagger"
 
 
 func _process(delta: float) -> void:
@@ -140,6 +144,11 @@ func _physics_process(delta: float) -> void:
 				velocity.x = move_toward(velocity.x, 0, speed)
 				velocity.z = move_toward(velocity.z, 0, speed)
 
+			#if knockback_timer > 0.0:
+				#velocity += knockback_direction * knockback_force
+				#knockback_timer -= delta
+		
+		EnemyState.Stagger:
 			if knockback_timer > 0.0:
 				velocity += knockback_direction * knockback_force
 				knockback_timer -= delta
@@ -186,6 +195,10 @@ func apply_knockback() -> void:
 
 func attack() -> void:
 	player.hitpoints -= attack_damage
+
+
+func _on_animation_finished(anim_name: StringName) -> void:
+	change_state(EnemyState.Provoked)
 
 
 func _on_navigation_agent_3d_navigation_finished() -> void:
