@@ -22,14 +22,11 @@ var knockback_direction: Vector3 = Vector3.ZERO
 @export var aggro_range: float = 12.0
 @export var attack_range: float = 1.5
 @export var max_hitpoints: int = 100
-@export var attack_cooldown_duration: float = 1.0
 @export var attack_damage: int = 20
 
 var player: Player
 var olive_splat_position: Vector3
 var distance_to_player: float
-var provoked: bool = false # provoked is for Player
-var alerted: bool = false # alerted is for Olives
 var hitpoints: int = max_hitpoints:
 	set(value):
 		hitpoints = value
@@ -40,15 +37,13 @@ var hitpoints: int = max_hitpoints:
 		change_state(EnemyState.Provoked)
 
 var current_state: EnemyState
-#var state_change_timer: float = 0.0
-var attack_timer: float = 0.0
 var wander_time: float = 0.0
 var wander_direction: Vector3
 
 #var target_angle: float = 0.0 # Desired Y-axis rotation in radians
 #var rotation_speed: float = TAU # Radians per second
 
-@onready var temp_body: MeshInstance3D = $TempBody
+#@onready var pineapple_mesh: MeshInstance3D = $PineappleMesh
 @onready var state_label: Label3D = $StateLabel
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
 @onready var olive_detector_area_3d: Area3D = $OliveDetectorArea3D
@@ -66,11 +61,14 @@ func change_state(new_state: EnemyState) -> void:
 	current_state = new_state
 	match current_state:
 		EnemyState.Wander:
+			animation_player.play("float")
 			state_label.text = "Wander"
 			randomize_wander_variables()
 		EnemyState.Alerted:
+			animation_player.play("pursue")
 			state_label.text = "Alerted"
 		EnemyState.Investigate:
+			animation_player.play("float")
 			state_label.text = "Investigate"
 			investigate_timer = investigate_duration
 		EnemyState.Provoked:
@@ -78,8 +76,6 @@ func change_state(new_state: EnemyState) -> void:
 
 
 func _process(delta: float) -> void:
-	attack_timer -= delta
-	
 	match current_state:
 		EnemyState.Wander:
 			if wander_time <= 0.0:
@@ -102,13 +98,14 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 	
 	distance_to_player = global_position.distance_to(player.global_position)
-	if distance_to_player <= aggro_range:
-		change_state(EnemyState.Provoked)
 	
 	match current_state:
 		EnemyState.Wander:
 			velocity = wander_direction * wander_speed
 			look_at_target(wander_direction)
+			
+			if distance_to_player <= aggro_range:
+				change_state(EnemyState.Provoked)
 		
 		EnemyState.Alerted:
 			var next_position = navigation_agent_3d.get_next_path_position()
@@ -125,8 +122,10 @@ func _physics_process(delta: float) -> void:
 				velocity.z = move_toward(velocity.z, 0, speed)
 		
 		EnemyState.Provoked:
-			if distance_to_player <= attack_range and attack_timer <= 0.0:
-				attack()
+			if distance_to_player <= attack_range:
+				animation_player.play("attack")
+			else:
+				animation_player.play("pursue")
 	
 			var next_position = navigation_agent_3d.get_next_path_position()
 			
@@ -148,7 +147,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_olive_detector_body_entered(body: Node) -> void:
-	if body is OliveProjectile:
+	if body is OliveProjectile and current_state != EnemyState.Provoked:
 		body.splatted.connect(_on_olive_splatted)
 
 
@@ -185,7 +184,6 @@ func apply_knockback() -> void:
 
 
 func attack() -> void:
-	attack_timer = attack_cooldown_duration
 	player.hitpoints -= attack_damage
 
 
