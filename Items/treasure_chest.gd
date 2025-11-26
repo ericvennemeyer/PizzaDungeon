@@ -3,7 +3,6 @@ extends Interactable
 
 @export var pickup_item: PackedScene
 
-var is_open: bool = false
 var player: Player
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -12,14 +11,15 @@ var player: Player
 
 func _ready() -> void:
 	interacted.connect(_on_interacted)
+	animation_player.animation_finished.connect(_on_animation_finished)
 
 
 func _on_interacted(body) -> void:
 	if body is Player:
 		player = body
-		if not is_open:
+		if not is_activated:
 			animation_player.play("open")
-			is_open = true
+			is_activated = true
 
 
 func equip_item() -> void:
@@ -29,3 +29,7 @@ func equip_item() -> void:
 	add_child(new_pickup)
 	
 	player.weapon_handler.add_inventory(new_pickup.item_name, new_pickup.ammo_type, new_pickup.amount)
+
+
+func _on_animation_finished(anim_name: StringName) -> void:
+	pass

@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cn0btimh4fxf"]
+[gd_scene load_steps=8 format=3 uid="uid://cn0btimh4fxf"]
 
 [ext_resource type="Script" uid="uid://d1pba8e03pkc5" path="res://Pickups/pickup.gd" id="1_0pywb"]
 [ext_resource type="Shader" uid="uid://df7hmg0cumiqg" path="res://Pickups/FresnelAura.tres" id="2_vx7qd"]
-[ext_resource type="ArrayMesh" uid="uid://855ohaopdiag" path="res://Weapons/rolling_pin.res" id="2_x5h4h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x5h4h"]
 render_priority = 0
@@ -66,7 +65,6 @@ script = ExtResource("1_0pywb")
 
 [node name="ItemMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(-3.0598e-08, -0.7, 0, 0.7, -3.0598e-08, 0, 0, 0, 0.7, -0.325, 0, 0)
-mesh = ExtResource("2_x5h4h")
 
 [node name="FresnelAura" type="MeshInstance3D" parent="ItemMesh"]
 transform = Transform3D(-6.24449e-08, 1.42857, 0, -1.42857, -6.24449e-08, 0, 0, 0, 1.42857, -2.02946e-08, -0.464286, 0)

@@ -6,9 +6,6 @@
 [node name="OlivePickup" instance=ExtResource("1_u68q7")]
 item_name = "OliveProjectileWeapon"
 
-[node name="ItemMesh" parent="." index="0"]
-mesh = null
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ItemMesh" index="1"]
 transform = Transform3D(0.0381213, 1.42517, -0.466312, 0.899845, 0.351397, 1.14752, 1.19951, -0.308902, -0.846022, -0.0923297, -0.310142, 0.113195)
 mesh = ExtResource("2_uthsy")
@@ -20,3 +17,8 @@ mesh = ExtResource("2_uthsy")
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="ItemMesh" index="3"]
 transform = Transform3D(0.536575, 1.26681, -0.597723, 0.446826, 0.45184, 1.35874, 1.32757, -0.664098, -0.215733, 0.128866, -0.496295, -0.0364126)
 mesh = ExtResource("2_uthsy")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="ItemMesh" index="4"]
+transform = Transform3D(-6.24449e-08, 1.42857, 0, -1.42857, -6.24449e-08, 0, 0, 0, 1.42857, 0.239176, -0.505317, 0.485008)
+light_color = Color(1, 0.310706, 0.432066, 1)
+light_energy = 5.0
