@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://d34pmglsiqfd4"
-path="res://.godot/imported/treasure chest_temp.glb-4cc894c197a0013ed2128a4830ccf32d.scn"
+uid="uid://bppo3dn0u2ioh"
+path="res://.godot/imported/treasure chest_final.glb-c3f7a25092f9c2d1306a60f880c702e4.scn"
 
 [deps]
 
-source_file="res://Items/treasure chest_temp.glb"
-dest_files=["res://.godot/imported/treasure chest_temp.glb-4cc894c197a0013ed2128a4830ccf32d.scn"]
+source_file="res://Items/treasure chest_final.glb"
+dest_files=["res://.godot/imported/treasure chest_final.glb-c3f7a25092f9c2d1306a60f880c702e4.scn"]
 
 [params]
 
@@ -34,15 +34,15 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "meshes": {
-"treasure chest_temp_Cube_001": {
+"treasure chest_final_Cube_001": {
 "generate/lightmap_uv": 0,
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": true,
-"save_to_file/path": "res://Items/treasure_chesst_bottom.res"
+"save_to_file/path": "res://Items/treasure_chest_bottom.res"
 },
-"treasure chest_temp_Cube_002": {
+"treasure chest_final_Cube_002": {
 "generate/lightmap_uv": 0,
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
