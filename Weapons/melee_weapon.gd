@@ -15,18 +15,10 @@ extends Node3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
-func _ready() -> void:
-	pass # Replace with function body.
-
-
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("Fire"):
 		if cooldown_timer.is_stopped():
 			shoot()
-
-
-#func _input(event: InputEvent) -> void:
-	# Going to need to read attack input here for web build
 
 
 func shoot() -> void:

@@ -7,16 +7,18 @@ extends Node
 
 
 enum ammo_type {
-	BULLET,
-	SMALL_BULLET,
+	OLIVE,
 	NONE
 }
 
 var ammo_storage: Dictionary[int, int] = {
-	ammo_type.BULLET: 10,
-	ammo_type.SMALL_BULLET: 60,
+	ammo_type.OLIVE: 10,
 	ammo_type.NONE: 0
 }
+
+
+func _ready() -> void:
+	ammo_label.visible = false
 
 
 func has_ammo(type: ammo_type) -> bool:
@@ -35,4 +37,8 @@ func add_ammo(type: ammo_type, amount: int) -> void:
 
 
 func update_ammo_label(type: ammo_type) -> void:
-	ammo_label.text = str(ammo_storage[type])
+	if type == ammo_type.OLIVE:
+		ammo_label.visible = true
+		ammo_label.text = str(ammo_storage[type])
+	else:
+		ammo_label.visible = false

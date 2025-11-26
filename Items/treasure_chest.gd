@@ -28,4 +28,4 @@ func equip_item() -> void:
 	new_pickup.rotation = marker_3d.rotation
 	add_child(new_pickup)
 	
-	player.weapon_handler.add_inventory(new_pickup.item_name)
+	player.weapon_handler.add_inventory(new_pickup.item_name, new_pickup.ammo_type, new_pickup.amount)

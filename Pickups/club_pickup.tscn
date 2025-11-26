@@ -45,6 +45,8 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_m1rbu")
 
 [node name="ClubPickup" instance=ExtResource("1_58xv4")]
+ammo_type = 1
+amount = 0
 item_name = "Club"
 
 [node name="ItemMesh" parent="." index="0"]

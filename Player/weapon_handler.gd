@@ -22,12 +22,15 @@ func _unhandled_input(event: InputEvent) -> void:
 		change_weapon(-1)
 
 
-func add_inventory(weapon_name: String) -> void:
+func add_inventory(weapon_name: String, ammo_type: AmmoHandler.ammo_type, amount: int) -> void:
 	for child in get_children():
 		if child.name == weapon_name:
-			child.in_inventory = true
-			equip(child)
-			break
+			if not child.in_inventory:
+				child.in_inventory = true
+				equip(child)
+				break
+			else:
+				child.ammo_handler.add_ammo(ammo_type, amount)
 
 
 func equip(active_weapon: Node3D) -> void:

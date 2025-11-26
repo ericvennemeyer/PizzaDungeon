@@ -164,6 +164,7 @@ weapon_1 = NodePath("Club")
 
 [node name="Club" parent="SubViewportContainer/SubViewport/WeaponCamera/WeaponHandler" node_paths=PackedStringArray("ammo_handler") instance=ExtResource("4_00tjw")]
 ammo_handler = NodePath("../../AmmoHandler")
+ammo_type = 1
 
 [node name="OliveProjectileWeapon" parent="SubViewportContainer/SubViewport/WeaponCamera/WeaponHandler" node_paths=PackedStringArray("ammo_handler") instance=ExtResource("5_x3vf3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.24081)
