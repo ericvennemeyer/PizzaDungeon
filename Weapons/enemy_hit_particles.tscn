@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://deso22l0b3hg4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5f5s0"]
-albedo_color = Color(0.825356, 0.329612, 0.22631, 1)
+albedo_color = Color(0.97, 0.7275, 0, 1)
 
 [sub_resource type="Curve" id="Curve_ph6ed"]
 _data = [Vector2(0.0293255, 1), 0.0, -2.42203, 0, 0, Vector2(1, 0.0164933), -0.0548093, 0.0, 0, 0]
@@ -14,7 +14,8 @@ curve = SubResource("Curve_ph6ed")
 spread = 180.0
 initial_velocity_min = 1.0
 initial_velocity_max = 5.0
-scale_min = 0.5
+scale_min = 0.2
+scale_max = 0.8
 scale_curve = SubResource("CurveTexture_qm5by")
 
 [sub_resource type="BoxMesh" id="BoxMesh_ph6ed"]
@@ -76,10 +77,10 @@ top_level = true
 material_override = SubResource("StandardMaterial3D_5f5s0")
 cast_shadow = 0
 emitting = false
-amount = 10
+amount = 15
 lifetime = 0.5
 one_shot = true
-explosiveness = 1.0
+explosiveness = 0.8
 process_material = SubResource("ParticleProcessMaterial_6h8hx")
 draw_pass_1 = SubResource("BoxMesh_ph6ed")
 
