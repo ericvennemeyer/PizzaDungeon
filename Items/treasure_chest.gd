@@ -7,6 +7,7 @@ var player: Player
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var marker_3d: Marker3D = $Marker3D
+@onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
 
 
 func _ready() -> void:
@@ -19,6 +20,7 @@ func _on_interacted(body) -> void:
 		player = body
 		if not is_activated:
 			animation_player.play("open")
+			audio_stream_player_3d.play()
 			is_activated = true
 
 

@@ -31,6 +31,7 @@ var distance_to_player: float
 var hitpoints: int = max_hitpoints:
 	set(value):
 		hitpoints = value
+
 		change_state(EnemyState.Stagger)
 		print(hitpoints)
 		if hitpoints <= 0:
@@ -49,6 +50,7 @@ var wander_direction: Vector3
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
 @onready var olive_detector_area_3d: Area3D = $OliveDetectorArea3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var hit_audio_player: AudioStreamPlayer = $HitAudioPlayer
 
 
 func _ready() -> void:
@@ -149,6 +151,9 @@ func _physics_process(delta: float) -> void:
 				#knockback_timer -= delta
 		
 		EnemyState.Stagger:
+			if not hit_audio_player.playing:
+				hit_audio_player.play
+			
 			if knockback_timer > 0.0:
 				velocity += knockback_direction * knockback_force
 				knockback_timer -= delta

@@ -25,7 +25,6 @@ var weapon_zoom_speed: float = 20.0
 @onready var damage_animation_player: AnimationPlayer = $DamageTexture/DamageAnimationPlayer
 @onready var game_over_menu: Control = $GameOverMenu
 @onready var ammo_handler: AmmoHandler = %AmmoHandler
-#@onready var weapon_handler: Node3D = %WeaponHandler
 @onready var smooth_camera: Camera3D = %SmoothCamera
 @onready var weapon_camera: Camera3D = %WeaponCamera
 @onready var smooth_camera_fov := smooth_camera.fov
@@ -33,6 +32,7 @@ var weapon_zoom_speed: float = 20.0
 @onready var health_progress_bar: ProgressBar = $MarginContainer/HealthProgressBar
 @onready var weapon_handler: Node3D = %WeaponHandler
 @onready var interaction_ray_cast: RayCast3D = $CameraPivot/SmoothCamera/InteractionRayCast
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 
 func _ready() -> void:
@@ -84,12 +84,15 @@ func _physics_process(delta: float) -> void:
 	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
+		if not audio_stream_player.playing:
+			audio_stream_player.play()
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed
 		if Input.is_action_pressed("aim"):
 			velocity.x *= aim_multiplier
 			velocity.y *= aim_multiplier
 	else:
+		audio_stream_player.stop()
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
 
