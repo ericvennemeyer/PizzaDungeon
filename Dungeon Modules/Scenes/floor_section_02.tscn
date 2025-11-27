@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlvd7vn2xsm8v"]
+
+[ext_resource type="ArrayMesh" uid="uid://by37747eugvlw" path="res://Dungeon Modules/floor 02 mesh.res" id="1_dx1de"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b61j7"]
+size = Vector3(4, 0.0839539, 4)
+
+[node name="FloorSection02" type="StaticBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_dx1de")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.041214, 0)
+shape = SubResource("BoxShape3D_b61j7")

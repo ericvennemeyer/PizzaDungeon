@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://qprepsngo36n"]
+[gd_scene load_steps=15 format=3 uid="uid://qprepsngo36n"]
 
 [ext_resource type="PackedScene" uid="uid://b7jp36he6oqf6" path="res://Levels/test scene from blender/modular pizza dungeon_test scene.glb" id="1_4wt11"]
 [ext_resource type="PackedScene" uid="uid://f22au7be1on2" path="res://Player/player.tscn" id="2_nq0nm"]
@@ -6,6 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://cjjnmjin8jxfi" path="res://Enemy/enemy_pineapple.tscn" id="4_ovg2e"]
 [ext_resource type="PackedScene" uid="uid://c868giojhx5pw" path="res://Items/treasure_chest.tscn" id="5_ovg2e"]
 [ext_resource type="PackedScene" uid="uid://1gmlgpgm0oag" path="res://Pickups/olive_pickup.tscn" id="6_wgs1j"]
+[ext_resource type="PackedScene" uid="uid://d133a4lcpg3lj" path="res://Items/candle.tscn" id="7_swosc"]
+[ext_resource type="PackedScene" uid="uid://cd4q8na4mffvw" path="res://Items/barrell.tscn" id="8_y71ee"]
+[ext_resource type="PackedScene" uid="uid://c0otwf7jgdhb8" path="res://Items/torch.tscn" id="9_43nux"]
+[ext_resource type="PackedScene" uid="uid://dyb4v2t8hjryb" path="res://Items/crate.tscn" id="10_rhwg5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4wt11"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -33,6 +37,7 @@ environment = SubResource("Environment_o7ysn")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 layers = 3
+light_energy = 0.1
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("2_nq0nm")]
@@ -89,3 +94,21 @@ pickup_item = ExtResource("6_wgs1j")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 34)
 knockback_force = 0.8
 aggro_range = 5.0
+
+[node name="Candle" parent="." instance=ExtResource("7_swosc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.3221, 1.19256, 38.5365)
+
+[node name="Candle2" parent="." instance=ExtResource("7_swosc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8746, 0.000182092, 39.5514)
+
+[node name="Barrell" parent="." instance=ExtResource("8_y71ee")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.3279, 0.00292951, 38.3324)
+
+[node name="Torch" parent="." instance=ExtResource("9_43nux")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.8221, 1.84717, 39.2288)
+
+[node name="Crate" parent="." instance=ExtResource("10_rhwg5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 1.19209e-07, 45)
+
+[node name="Crate2" parent="." instance=ExtResource("10_rhwg5")]
+transform = Transform3D(0.784852, 0, -0.619683, 0, 1, 0, 0.619683, 0, 0.784852, 16, 1.19812, 45)

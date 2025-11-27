@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://oyv40k45t3g4"]
+
+[ext_resource type="ArrayMesh" uid="uid://cfc1e7damr1bp" path="res://Dungeon Modules/wall gray mesh.res" id="1_y6xrk"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_y6xrk"]
+points = PackedVector3Array(2.8822, -1.53235, -0.284479, 0.48895, 1.57325, 0.49175, 0.48895, 1.57325, -0.47875, -0.481321, -1.53235, 0.49175, 3.59857, 1.46495, 0.226256, -0.335747, -1.42316, -0.444628, 3.59128, -1.48115, 0.225459, 3.65915, 1.5085, -0.284574, -0.481321, 1.57325, 0.49175, -0.334105, 1.46283, -0.444244, 3.65915, -1.53205, -0.284574, 0.48895, -1.53235, -0.47875, 0.48895, -1.53235, 0.49175)
+
+[node name="WallGray" type="StaticBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+mesh = ExtResource("1_y6xrk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("ConvexPolygonShape3D_y6xrk")
