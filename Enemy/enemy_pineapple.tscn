@@ -8,8 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://dp8nn3jatmsrl" path="res://Enemy/pineapple_death_sfx.tscn" id="6_pqh15"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cu181"]
-radius = 0.283356
-height = 1.58567
+radius = 0.3
+height = 1.5
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_cu181"]
 radius = 6.0
@@ -206,19 +206,21 @@ _data = {
 }
 
 [node name="EnemyPineapple" type="CharacterBody3D"]
+safe_margin = 0.25
 script = ExtResource("1_cu181")
-knockback_force = 5.0
+knockback_force = 0.25
+wander_speed = 0.5
+max_wander_time = 8.0
 
 [node name="PineappleMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.8, 0)
 mesh = ExtResource("2_y4y3i")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.800508, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.800508, -0.0352572)
 shape = SubResource("CapsuleShape3D_cu181")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-debug_enabled = true
 debug_path_custom_color = Color(1, 0, 0, 1)
 
 [node name="OliveDetectorArea3D" type="Area3D" parent="."]
@@ -228,6 +230,7 @@ shape = SubResource("SphereShape3D_cu181")
 
 [node name="StateLabel" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.99725, 0)
+visible = false
 billboard = 1
 text = "STATE"
 font_size = 48

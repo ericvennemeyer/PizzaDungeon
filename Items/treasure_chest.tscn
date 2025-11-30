@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://c868giojhx5pw"]
+[gd_scene load_steps=9 format=3 uid="uid://c868giojhx5pw"]
 
 [ext_resource type="ArrayMesh" uid="uid://vg5xx1sofdip" path="res://Items/treasure_chest_top.res" id="1_nwcol"]
 [ext_resource type="Script" uid="uid://tykav0wmr7me" path="res://Items/treasure_chest.gd" id="1_yhc08"]
-[ext_resource type="PackedScene" uid="uid://bmlr007eujfla" path="res://Pickups/club_pickup.tscn" id="2_0qmon"]
 [ext_resource type="ArrayMesh" uid="uid://da4npatpnunlc" path="res://Items/treasure_chest_bottom.res" id="2_yhc08"]
 [ext_resource type="AudioStream" uid="uid://16tys2gysqjy" path="res://Audio/SFX/Open Container Wood D.wav" id="5_y5qwn"]
 
@@ -63,7 +62,6 @@ _data = {
 
 [node name="TreasureChest" type="StaticBody3D"]
 script = ExtResource("1_yhc08")
-pickup_item = ExtResource("2_0qmon")
 prompt_message = "Treasure Chest"
 prompt_input = "interact"
 

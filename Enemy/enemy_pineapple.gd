@@ -20,6 +20,8 @@ var knockback_direction: Vector3 = Vector3.ZERO
 
 @export var speed: float = 5.0
 @export var wander_speed: float = 2.0
+@export var min_wander_time: float = 2.0
+@export var max_wander_time: float = 6.0
 @export var aggro_range: float = 12.0
 @export var attack_range: float = 1.5
 @export var max_hitpoints: int = 75
@@ -34,8 +36,6 @@ var hitpoints: int = max_hitpoints:
 
 		change_state(EnemyState.Stagger)
 		print(hitpoints)
-		if hitpoints <= 0:
-			die()
 		#change_state(EnemyState.Provoked)
 
 var current_state: EnemyState
@@ -171,6 +171,9 @@ func _physics_process(delta: float) -> void:
 			if knockback_timer > 0.0:
 				velocity += knockback_direction * knockback_force
 				knockback_timer -= delta
+			
+			if hitpoints <= 0:
+				die()
 
 	move_and_slide()
 
@@ -202,7 +205,7 @@ func look_at_target(direction: Vector3) -> void:
 
 func randomize_wander_variables() -> void:
 	wander_direction = Vector3(randf_range(-1.0, 1.0), 0.0, randf_range(-1.0, 1.0))
-	wander_time = randf_range(1.0, 4.0)
+	wander_time = randf_range(min_wander_time, max_wander_time)
 
 
 func apply_knockback() -> void:

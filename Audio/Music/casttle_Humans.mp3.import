@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/casttle_Humans.mp3-3d7766b9c2c86ac13711a36728
 
 [params]
 
-loop=false
-loop_offset=0
-bpm=0
+loop=true
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4
