@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bj3cuwnawlyyr"]
+[gd_scene load_steps=5 format=3 uid="uid://bj3cuwnawlyyr"]
 
 [ext_resource type="Script" uid="uid://bfx720r11q1ca" path="res://Weapons/olive_projectile.gd" id="1_pq7d0"]
+[ext_resource type="PackedScene" uid="uid://cjrj0cwv3ce3v" path="res://Weapons/splat_sfx.tscn" id="2_4r5nu"]
 [ext_resource type="ArrayMesh" uid="uid://dxy2w01xlshpf" path="res://Weapons/black_olive.res" id="2_t4k81"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qy02c"]
@@ -18,3 +19,5 @@ shape = SubResource("SphereShape3D_qy02c")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.73463, 0, -0.316731, 0, 0.8, 0, 0.316731, 0, 0.73463, 0, 0, 0)
 mesh = ExtResource("2_t4k81")
+
+[node name="SplatSFX" parent="." instance=ExtResource("2_4r5nu")]

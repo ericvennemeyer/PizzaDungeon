@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dp8nn3jatmsrl"]
+
+[ext_resource type="AudioStream" uid="uid://dvs03673o5imj" path="res://Audio/SFX/Im hurt001.wav" id="1_8m35g"]
+[ext_resource type="Script" uid="uid://cjsqif1267qvp" path="res://Enemy/pineapple_death_sfx.gd" id="1_rawq3"]
+
+[node name="PineappleDeathSFX" type="AudioStreamPlayer3D"]
+stream = ExtResource("1_8m35g")
+script = ExtResource("1_rawq3")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

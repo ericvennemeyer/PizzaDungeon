@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://f22au7be1on2"]
+[gd_scene load_steps=23 format=3 uid="uid://f22au7be1on2"]
 
 [ext_resource type="Script" uid="uid://f4qga21ey647" path="res://Player/player.gd" id="1_l8h54"]
 [ext_resource type="Script" uid="uid://6obxm53fjk5r" path="res://Player/smooth_camera.gd" id="2_4ntmi"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dkuxinwnlda42" path="res://Player/game_over_menu.tscn" id="6_fhl08"]
 [ext_resource type="FontFile" uid="uid://dusmamaheo07n" path="res://Assets/Jacquard24-Regular.ttf" id="9_x3vf3"]
 [ext_resource type="AudioStream" uid="uid://cov7axppufn6s" path="res://Audio/SFX/Jog stone.wav" id="12_5htga"]
+[ext_resource type="AudioStream" uid="uid://cp3ywpwj5syd0" path="res://Audio/SFX/Pick Up Stone A.wav" id="13_p5o4e"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_l3kh5"]
 
@@ -241,6 +242,9 @@ show_percentage = false
 process_mode = 3
 visible = false
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="FootstepsAudioPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_5htga")
 volume_db = -3.0
+
+[node name="EquipAudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_p5o4e")

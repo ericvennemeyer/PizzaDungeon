@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjrj0cwv3ce3v"]
+
+[ext_resource type="AudioStream" uid="uid://bjbnbys4myrtm" path="res://Audio/SFX/Drop Organic B.wav" id="1_swmie"]
+[ext_resource type="Script" uid="uid://c3aput6xx27lc" path="res://Weapons/splat_sfx.gd" id="2_t72tx"]
+
+[node name="SplatSFX" type="AudioStreamPlayer3D"]
+stream = ExtResource("1_swmie")
+max_distance = 15.0
+script = ExtResource("2_t72tx")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

@@ -6,6 +6,8 @@ extends Node3D
 
 var current_weapon: Node3D
 
+@onready var equip_audio_player: AudioStreamPlayer = $"../../../../EquipAudioPlayer"
+
 
 func _ready() -> void:
 	equip(weapon_1)
@@ -36,6 +38,8 @@ func add_inventory(weapon_name: String, ammo_type: AmmoHandler.ammo_type, amount
 func equip(active_weapon: Node3D) -> void:
 	for child in get_children():
 		if child == active_weapon and child.in_inventory:
+			equip_audio_player.play()
+			
 			child.visible = true
 			child.set_process(true)
 			child.ammo_handler.update_ammo_label(child.ammo_type)

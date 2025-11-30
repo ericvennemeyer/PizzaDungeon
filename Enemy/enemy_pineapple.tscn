@@ -1,8 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://cjjnmjin8jxfi"]
+[gd_scene load_steps=15 format=3 uid="uid://cjjnmjin8jxfi"]
 
 [ext_resource type="Script" uid="uid://btod8ltthy1kx" path="res://Enemy/enemy_pineapple.gd" id="1_cu181"]
 [ext_resource type="ArrayMesh" uid="uid://jbmnevrwcs45" path="res://Enemy/pineapple enemy baked mesh.res" id="2_y4y3i"]
 [ext_resource type="AudioStream" uid="uid://c7mhr321ouu5d" path="res://Audio/SFX/I Used To Be An Adventurer Like You.wav" id="3_qf4o4"]
+[ext_resource type="AudioStream" uid="uid://b2rrhy676awxm" path="res://Audio/SFX/Hit001.wav" id="4_vjsqu"]
+[ext_resource type="AudioStream" uid="uid://k6nm46tn8her" path="res://Audio/SFX/Breathing01.wav" id="5_d63q6"]
+[ext_resource type="PackedScene" uid="uid://dp8nn3jatmsrl" path="res://Enemy/pineapple_death_sfx.tscn" id="6_pqh15"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cu181"]
 radius = 0.283356
@@ -237,3 +240,12 @@ libraries = {
 
 [node name="HitAudioPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_qf4o4")
+
+[node name="GroanAudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_vjsqu")
+
+[node name="BreathingAudioPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_d63q6")
+max_distance = 15.0
+
+[node name="PineappleDeathSFX" parent="." instance=ExtResource("6_pqh15")]

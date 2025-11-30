@@ -4,6 +4,7 @@ extends RigidBody3D
 signal splatted(olive_instance)
 
 @export var splat_particles = preload("res://Weapons/olive_splat_particles.tscn")
+@onready var splat_sfx: AudioStreamPlayer3D = $SplatSFX
 
 var launch_speed: float = 5.0
 
@@ -20,4 +21,8 @@ func _on_body_entered(_body: Node) -> void:
 	particles.global_position = global_position
 	particles.emitting = true
 	splatted.emit(self)
+	
+	splat_sfx.play()
+	splat_sfx.reparent(get_parent())
+	
 	queue_free()

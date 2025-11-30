@@ -22,7 +22,7 @@ var knockback_direction: Vector3 = Vector3.ZERO
 @export var wander_speed: float = 2.0
 @export var aggro_range: float = 12.0
 @export var attack_range: float = 1.5
-@export var max_hitpoints: int = 100
+@export var max_hitpoints: int = 75
 @export var attack_damage: int = 20
 
 var player: Player
@@ -35,7 +35,7 @@ var hitpoints: int = max_hitpoints:
 		change_state(EnemyState.Stagger)
 		print(hitpoints)
 		if hitpoints <= 0:
-			queue_free()
+			die()
 		#change_state(EnemyState.Provoked)
 
 var current_state: EnemyState
@@ -51,6 +51,9 @@ var wander_direction: Vector3
 @onready var olive_detector_area_3d: Area3D = $OliveDetectorArea3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var hit_audio_player: AudioStreamPlayer = $HitAudioPlayer
+@onready var groan_audio_player: AudioStreamPlayer = $GroanAudioPlayer
+@onready var breathing_audio_player_3d: AudioStreamPlayer3D = $BreathingAudioPlayer3D
+@onready var pineapple_death_sfx: AudioStreamPlayer3D = $PineappleDeathSFX
 
 
 func _ready() -> void:
@@ -65,19 +68,28 @@ func change_state(new_state: EnemyState) -> void:
 	current_state = new_state
 	match current_state:
 		EnemyState.Wander:
+			if not breathing_audio_player_3d.playing:
+				breathing_audio_player_3d.play()
 			animation_player.play("float")
 			state_label.text = "Wander"
 			randomize_wander_variables()
 		EnemyState.Alerted:
+			if not breathing_audio_player_3d.playing:
+				breathing_audio_player_3d.play()
 			animation_player.play("pursue")
 			state_label.text = "Alerted"
 		EnemyState.Investigate:
+			if not breathing_audio_player_3d.playing:
+				breathing_audio_player_3d.play()
 			animation_player.play("float")
 			state_label.text = "Investigate"
 			investigate_timer = investigate_duration
 		EnemyState.Provoked:
+			if not breathing_audio_player_3d.playing:
+				breathing_audio_player_3d.play()
 			state_label.text = "Provoked"
 		EnemyState.Stagger:
+			breathing_audio_player_3d.stop()
 			apply_knockback()
 			state_label.text = "Stagger"
 
@@ -152,7 +164,9 @@ func _physics_process(delta: float) -> void:
 		
 		EnemyState.Stagger:
 			if not hit_audio_player.playing:
-				hit_audio_player.play
+				hit_audio_player.play()
+			if not groan_audio_player.playing:
+				groan_audio_player.play(0.33)
 			
 			if knockback_timer > 0.0:
 				velocity += knockback_direction * knockback_force
@@ -203,9 +217,16 @@ func attack() -> void:
 
 
 func _on_animation_finished(anim_name: StringName) -> void:
-	change_state(EnemyState.Provoked)
+	if anim_name == "stagger":
+		change_state(EnemyState.Provoked)
 
 
 func _on_navigation_agent_3d_navigation_finished() -> void:
 	if current_state == EnemyState.Alerted:
 		change_state(EnemyState.Investigate)
+
+
+func die() -> void:
+	pineapple_death_sfx.play()
+	pineapple_death_sfx.reparent(get_parent())
+	queue_free()

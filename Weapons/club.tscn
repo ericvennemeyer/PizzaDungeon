@@ -82,6 +82,7 @@ _data = {
 
 [node name="Club" node_paths=PackedStringArray("weapon_mesh") instance=ExtResource("1_ymweh")]
 weapon_mesh = NodePath("RollingPin")
+weapon_damage = 25
 sparks = ExtResource("2_ix5jr")
 
 [node name="RollingPin" type="MeshInstance3D" parent="." index="2"]
